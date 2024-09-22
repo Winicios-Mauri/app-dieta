@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet, TextInput, KeyboardTypeOptions  } from 'react-native';
+import { View, Text, StyleSheet, TextInput, KeyboardTypeOptions  } from 'react-native';
 import { Controller } from 'react-hook-form';
 import { colors } from '../../constants/colors';
 
@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
 
   input: {
     height: 44,
-    backgroundColor: colors.white
+    backgroundColor: colors.white,
+    paddingHorizontal: 10,
+    borderRadius: 4
   },
 
   errorText: {
@@ -41,10 +43,11 @@ export function Input({ name, control, placeholder, rules, error, keyboardType }
             onBlur={onBlur}
             value={value}
             onChangeText={onChange}
-            keyboardType='default'
+            keyboardType= {keyboardType}
           />
         )}
       />
+      { error && <Text style={styles.errorText}>{error}</Text> }
     </View>
   );
 }
